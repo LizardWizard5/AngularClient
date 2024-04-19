@@ -1,0 +1,50 @@
+<h1 class="alert alert-info">{{title}}</h1>
+<div class="row">
+    <section class="col-6">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let class of Classes">
+            <h5>{{class.name}}</h5>
+            <p>{{class.day}}</p>
+            <p>{{class.time}}</p>
+            <p>{{class.room}}</p>
+            <button class="btn btn-primary" (click)="onSelect(class)">Edit</button>
+            
+            </li>
+        </ul>
+    </section>
+    <section class="col-6">
+        
+    <form class="form" method="POST" *ngIf="selectedClass">
+        <div class="mb-3">
+            <label for="name" class="form-label">Class name</label>
+            <input type="text" name="name" class="form-control" id="name" required [(ngModel)] = "selectedClass.name">
+        </div>
+        <div class="mb-3">  
+            <label for="teacher" class="form-label">Teacher</label>
+            <input type="text" name="teacher" class="form-control" id="teacher" [(ngModel)] = "selectedClass.teacher" required>
+        </div>
+        <div class="mb-3">
+            <label for="room" class="form-label">Room</label>
+            <input type="text" name="room" class="form-control" id="room" [(ngModel)] = "selectedClass.room" required>
+        </div>
+        <div class="mb-3">
+            <label for="time" class="form-label">Time</label>
+            <input type="time" name="time" class="form-control" id="time" [(ngModel)] = "selectedClass.time" required>
+        </div>
+        <div class="mb-3">
+            <label for="day" class="form-label">Day</label>
+            <select name="day" class="selectpicker">
+                
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thusday">Thursday</option>
+                <option value="Friday">Friday</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-primary" (click)="onReset()">Close</button>
+    </form>
+  
+    </section>
+</div>
